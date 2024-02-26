@@ -27,5 +27,5 @@ taleplere anında yanıt vererek işlem tamamlanana kadar devam eder.
 # Make SSE Server with Go
 
 ```
-
+Read --> sse.go
 ```
