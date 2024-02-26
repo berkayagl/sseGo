@@ -135,6 +135,15 @@ func sseMessage(message string) http.HandlerFunc {
 	}
 }
 
+// HTTP sunucusunu başlatır ve belirli HTTP URL'lerine yönlendirilen requestleri ele alacak handler fonksiyonları belirtir.
+// "/stream" URL'sine gelen istekler için sseStream() handler fonksiyonunu, "/send" URL'sine gelen istekler için belirli bir mesajı gönderecek sseMessage() handler fonksiyonunu belirtir.
+// Sonrasında HTTP sunucusunu belirtilen adres ve port üzerinden dinlemeye başlar.
+
+// The main function is the main entry point of the program.
+// It starts an HTTP server and specifies handler functions to handle requests directed to specific HTTP URLs.
+// It associates the sseStream() handler function with requests to the "/stream" URL, and sseMessage() handler function with requests to the "/send", "/right", and "/left" URLs.
+// Finally, it starts the HTTP server to listen on the specified address and port.
+
 func main() {
 	http.HandleFunc("/stream", sseStream())
 	http.HandleFunc("/send", sseMessage("you can put json in here as the data"))
