@@ -7,12 +7,12 @@ import (
 	"sync"
 )
 
-// `SSEConnection` adında yeni bir veri türü tanımlanmıştır. 
+
 // Bu veri türü, bir SSE bağlantısını temsil eder. 
 // `Connection` alanı, bir `http.ResponseWriter` türünde bir bağlantıyı, 
 // `Message` alanı ise mesajların iletilmesi için kullanılan bir kanalı içerir.
 
-// This code defines a new data type named `SSEConnection`. 
+
 // This data type represents an SSE connection. 
 // It has two fields:`Connection`, which represents a connection of type `http.ResponseWriter`, 
 // and `Message`, a channel used for sending messages.
@@ -22,12 +22,12 @@ type SSEConnection struct {
 	Message    chan string
 }
 
-// `sseStreamData` adında yeni bir veri türü tanımlanmıştır. 
+
 // Bu veri türü, SSE bağlantılarını yönetmek için kullanılır. 
 // `Connections` adında bir harita (map) içerir, bu harita her bir `http.ResponseWriter` bağlantısına karşılık gelen bir `SSEConnection` nesnesi tutar. 
 // Ayrıca, veriyi eşzamanlı bir şekilde güvenli bir şekilde erişmek için `sync.RWMutex` türünde bir kilit içerir.
 
-// This code defines a new data type named `sseStreamData`. 
+
 // This data type is used to manage SSE connections. 
 // It contains a map named `Connections` which maps each `http.ResponseWriter` connection to an `SSEConnection` object. 
 // Additionally, it includes a `sync.RWMutex` lock for safely accessing the data concurrently.
@@ -51,7 +51,7 @@ var sseData = sseStreamData{
 }
 
 
-// `prepareHeaderForSSE` adında bir fonksiyon tanımlanmıştır. 
+
 // Bu fonksiyon, Server-Sent Events (SSE) için gerekli olan başlık bilgilerini hazırlar. 
 // Fonksiyon, `http.ResponseWriter` arabirimine sahip bir parametre alır ve bu parametre üzerinden HTTP yanıtının başlığını yapılandırır. 
 // İlgili başlıklar şunlardır: `Content-Type` (içerik türü), `Cache-Control` (önbellek kontrolü), `Connection` (bağlantı) ve `Access-Control-Allow-Origin` (kök başlığa izin verilen kaynaklar).
