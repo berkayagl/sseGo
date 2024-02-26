@@ -117,6 +117,12 @@ func sseStream() http.HandlerFunc {
 	}
 }
 
+// sseMessage fonksiyonu, belirli bir mesajı Server-Sent Events (SSE) bağlantısına gönderen bir http.HandlerFunc döndürmektedir.
+// Verilen mesajı alarak, bağlantıyı kilitleyip sseData.Connections altında mesajı gönderir.
+
+// The sseMessage function returns an http.HandlerFunc that sends a specific message to a Server-Sent Events (SSE) connection.
+// It locks and sends the message under sseData.Connections by extracting the given message.
+
 func sseMessage(message string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		sseData.RLock()
