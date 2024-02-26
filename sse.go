@@ -50,6 +50,16 @@ var sseData = sseStreamData{
 	Connections: make(map[http.ResponseWriter]SSEConnection),
 }
 
+
+// `prepareHeaderForSSE` adında bir fonksiyon tanımlanmıştır. 
+// Bu fonksiyon, Server-Sent Events (SSE) için gerekli olan başlık bilgilerini hazırlar. 
+// Fonksiyon, `http.ResponseWriter` arabirimine sahip bir parametre alır ve bu parametre üzerinden HTTP yanıtının başlığını yapılandırır. 
+// İlgili başlıklar şunlardır: `Content-Type` (içerik türü), `Cache-Control` (önbellek kontrolü), `Connection` (bağlantı) ve `Access-Control-Allow-Origin` (kök başlığa izin verilen kaynaklar).
+
+// This function prepares the necessary header information for Server-Sent Events (SSE).
+// The function takes a parameter of type `http.ResponseWriter` and configures the headers of the HTTP response using this parameter.
+// The relevant headers set in this function are: `Content-Type`, `Cache-Control`, `Connection`, and `Access-Control-Allow-Origin`.
+
 func prepareHeaderForSSE(w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
