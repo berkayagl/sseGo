@@ -21,7 +21,6 @@ type SSEConnection struct {
 	Message    chan string
 }
 
-
 // Bu veri türü, SSE bağlantılarını yönetmek için kullanılır. 
 // `Connections` adında bir harita (map) içerir, bu harita her bir `http.ResponseWriter` bağlantısına karşılık gelen bir `SSEConnection` nesnesi tutar. 
 // Ayrıca, veriyi eşzamanlı bir şekilde güvenli bir şekilde erişmek için `sync.RWMutex` türünde bir kilit içerir.
