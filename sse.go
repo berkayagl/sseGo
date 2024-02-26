@@ -8,9 +8,13 @@ import (
 )
 
 // `SSEConnection` adında yeni bir veri türü tanımlanmıştır. 
-// Bu veri türü, bir SSE bağlantısını temsil eder. `Connection` alanı, bir `http.ResponseWriter` türünde bir bağlantıyı, `Message` alanı ise mesajların iletilmesi için kullanılan bir kanalı içerir.
+// Bu veri türü, bir SSE bağlantısını temsil eder. 
+// `Connection` alanı, bir `http.ResponseWriter` türünde bir bağlantıyı, 
+// `Message` alanı ise mesajların iletilmesi için kullanılan bir kanalı içerir.
 
-// This code defines a new data type named `SSEConnection`. This data type represents an SSE connection. It has two fields:`Connection`, which represents a connection of type `http.ResponseWriter`, and `Message`, a channel used for sending messages.
+// This code defines a new data type named `SSEConnection`. 
+// This data type represents an SSE connection. 
+// It has two fields:`Connection`, which represents a connection of type `http.ResponseWriter`, and `Message`, a channel used for sending messages.
 type SSEConnection struct {
 	Connection http.ResponseWriter
 	Message    chan string
