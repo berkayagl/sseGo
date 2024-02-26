@@ -61,6 +61,14 @@ func prepareHeaderForSSE(w http.ResponseWriter) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
+// writeData fonksiyonu, belirtilen http.ResponseWriter üzerine sse veri yazmaktan sorumludur.
+// Ayrıca, sseData.Connections altında tutulan bağlantılardan gelen mesajları okuyarak veriyi yazmaktadır.
+// Fonksiyon, yazılan verinin boyutunu ve bir hata durumunda hata mesajını döndürmektedir.
+
+// The writeData function is responsible for writing SSE data to the specified http.ResponseWriter.
+// Additionally, it reads messages from connections stored under sseData.Connections to write the data.
+// The function returns the size of the written data and an error message in case of an error.
+
 func writeData(w http.ResponseWriter) (int, error) {
 	return fmt.Fprintf(w, "data: %s\n\n", <-sseData.Connections[w].Message)
 }
