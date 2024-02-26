@@ -7,7 +7,8 @@ import (
 	"sync"
 )
 
-// SSEConnection struct holds the connection and message channel information
+// `SSEConnection` adında yeni bir veri türü tanımlanmıştır. 
+// Bu veri türü, bir SSE bağlantısını temsil eder. `Connection` alanı, bir `http.ResponseWriter` türünde bir bağlantıyı, `Message` alanı ise mesajların iletilmesi için kullanılan bir kanalı içerir.
 type SSEConnection struct {
 	Connection http.ResponseWriter
 	Message    chan string
