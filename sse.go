@@ -16,6 +16,7 @@ import (
 // This data type represents an SSE connection. 
 // It has two fields:`Connection`, which represents a connection of type `http.ResponseWriter`, 
 // and `Message`, a channel used for sending messages.
+
 type SSEConnection struct {
 	Connection http.ResponseWriter
 	Message    chan string
