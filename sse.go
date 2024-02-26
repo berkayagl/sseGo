@@ -34,7 +34,6 @@ type sseStreamData struct {
 	sync.RWMutex
 }
 
-
 // Bu değişken, SSE bağlantılarını yönetmek için kullanılan veri yapısını temsil eder. 
 // `Connections` adında bir harita (map) içerir ve bu harita, her bir `http.ResponseWriter` bağlantısına karşılık gelen bir `SSEConnection` nesnesini depolar. 
 // Değişken, bu haritayı oluşturmak için `make` fonksiyonu kullanılarak başlatılmıştır.
