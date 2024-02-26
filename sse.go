@@ -21,7 +21,16 @@ type SSEConnection struct {
 	Message    chan string
 }
 
-// sseStreamData struct holds the SSE connections and their corresponding message channels
+// `sseStreamData` adında yeni bir veri türü tanımlanmıştır. 
+// Bu veri türü, SSE bağlantılarını yönetmek için kullanılır. 
+// `Connections` adında bir harita (map) içerir, bu harita her bir `http.ResponseWriter` bağlantısına karşılık gelen bir `SSEConnection` nesnesi tutar. 
+// Ayrıca, veriyi eşzamanlı bir şekilde güvenli bir şekilde erişmek için `sync.RWMutex` türünde bir kilit içerir.
+
+// This code defines a new data type named `sseStreamData`. 
+// This data type is used to manage SSE connections. 
+// It contains a map named `Connections` which maps each `http.ResponseWriter` connection to an `SSEConnection` object. 
+// Additionally, it includes a `sync.RWMutex` lock for safely accessing the data concurrently.
+
 type sseStreamData struct {
 	Connections map[http.ResponseWriter]SSEConnection
 	sync.RWMutex
