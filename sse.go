@@ -73,6 +73,18 @@ func writeData(w http.ResponseWriter) (int, error) {
 	return fmt.Fprintf(w, "data: %s\n\n", <-sseData.Connections[w].Message)
 }
 
+// sseStream fonksiyonu, bir http.HandlerFunc döndüren bir fonksiyondur.
+// Bu handler fonksiyonu, Server-Sent Events (SSE) akışı için gerekli olan işlemleri gerçekleştirmektedir.
+// SSE akışı başlatıldığında, connection'ın header'ını hazırlar, message kanalı oluşturur ve bağlantıyı sseData.Connections altında saklar.
+// Fonksiyon, bir sonsöz bloğu içinde bağlantıyı temizler ve mesaj kanalını kapatır.
+// Daha sonra bir sonsöz bloğu içinde sonsuz bir döngü başlatır, veri yazma işlemini gerçekleştirir ve flusher'ı kullanarak veriyi gönderir.
+
+// The sseStream function returns an http.HandlerFunc.
+// This handler function performs the necessary operations for Server-Sent Events (SSE) stream.
+// When the SSE stream is initiated, it prepares the header for the connection, creates a message channel, and stores the connection under sseData.Connections.
+// The function cleans up the connection and closes the message channel within a defer block.
+// It then starts an infinite loop within another defer block to perform data writing and send the data using the flusher.
+
 func sseStream() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		prepareHeaderForSSE(w)
